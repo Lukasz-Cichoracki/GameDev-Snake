@@ -10,10 +10,14 @@ public class Snake: MonoBehaviour
 
     public Transform segmentPrefab;
 
+    public GameObject deathMenu;
+
     public int initalSize = 3;
 
     private void Start()
     {
+        deathMenu.SetActive(false);
+        Time.timeScale = 1f;
         _segments = new List<Transform>();
         _segments.Add(this.transform);
         for(int i = 1; i < initalSize; i++)
@@ -33,6 +37,9 @@ public class Snake: MonoBehaviour
             _direction = Vector2.left;
         else if ((Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow)) && _direction !=Vector2.left)
             _direction = Vector2.right;
+
+        if (deathMenu.activeInHierarchy == true && Input.GetKeyDown(KeyCode.Space))
+            SceneManager.LoadScene("Snake_1");
     }
     private void FixedUpdate()
     {
@@ -55,12 +62,19 @@ public class Snake: MonoBehaviour
 
         _segments.Add(segment);
     }
+    private void ObstacleCollision()
+    {
+        Time.timeScale = 0f;
+        deathMenu.SetActive(true);
 
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Food")
             Grow();
         else if (collision.tag == "Obstacle")
-            SceneManager.LoadScene("Snake_1");
+            ObstacleCollision();
+            
     }
+    
 }
