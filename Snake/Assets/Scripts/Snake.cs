@@ -12,14 +12,26 @@ public class Snake: MonoBehaviour
 
     public int initalSize = 3;
 
+    public float snakeSpeed = 0.60f;
+
+    public SO_DifficultySettings sDS;
+
     private void Start()
     {
+        if (sDS.Difficulty == 2)
+            snakeSpeed = 1f;
+        else if (sDS.Difficulty == 3)
+            snakeSpeed = 1.25f;
+        else
+            snakeSpeed = 0.85f;
+        
         _segments = new List<Transform>();
         _segments.Add(this.transform);
         for(int i = 1; i < initalSize; i++)
         {
             _segments.Add(Instantiate(this.segmentPrefab));
         }
+        Time.timeScale = snakeSpeed;
 
     }
 
@@ -47,6 +59,7 @@ public class Snake: MonoBehaviour
             Mathf.Round(this.transform.position.y + _direction.y),
             0.0f
             );
+       
     }
     
     private void Grow()

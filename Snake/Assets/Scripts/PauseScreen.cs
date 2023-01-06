@@ -5,10 +5,12 @@ using UnityEngine;
 public class PauseScreen : MonoBehaviour
 {
     public static GameObject pauseScreen;
+    public static Snake snake;
 
     private void Awake()
     {
         pauseScreen = GameObject.Find("pauseScreen");
+        snake = FindObjectOfType<Snake>();
         ResumeGame();
     }
     private void Update()
@@ -29,7 +31,7 @@ public class PauseScreen : MonoBehaviour
     public static void ResumeGame()
     {
         pauseScreen.SetActive(false);
-        Time.timeScale = 1f;
+        Time.timeScale = snake.snakeSpeed;
     }
 
 
