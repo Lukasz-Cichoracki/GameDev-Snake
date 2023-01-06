@@ -1,0 +1,36 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class PauseScreen : MonoBehaviour
+{
+    public static GameObject pauseScreen;
+
+    private void Awake()
+    {
+        pauseScreen = GameObject.Find("pauseScreen");
+        ResumeGame();
+    }
+    private void Update()
+    {
+        if(DeathScreen.deathScreen.activeInHierarchy == false && pauseScreen.activeInHierarchy == false && Input.GetKeyDown(KeyCode.Escape))
+            PauseGame();
+        else if(pauseScreen.activeInHierarchy == true && Input.GetKeyDown(KeyCode.Escape))
+            ResumeGame();
+
+    }
+
+    public static void PauseGame()
+    {
+        Time.timeScale = 0f;
+        pauseScreen.SetActive(true);
+    }
+
+    public static void ResumeGame()
+    {
+        pauseScreen.SetActive(false);
+        Time.timeScale = 1f;
+    }
+
+
+}
