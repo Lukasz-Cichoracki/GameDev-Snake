@@ -9,11 +9,12 @@
 [Bb]uilds/
 [Ll]ogs/
 [Mm]emoryCaptures/
+[Tt]TextMesh Pro/
 
 # Ignore shaders etc.
 
-.cginc
-.shader
+.cginc/
+.shader/
 
 
 
