@@ -6,12 +6,13 @@ using UnityEngine.SceneManagement;
 public class DeathScreen : MonoBehaviour
 {
     public static GameObject deathScreen;
-   
-    private void Start()
+
+    private void Awake()
     {
         deathScreen = GameObject.Find("deathScreen");
         DisableDeathScreen();
     }
+
     private void Update()
     {
         if (deathScreen.activeInHierarchy == true && Input.GetKeyDown(KeyCode.Space))
