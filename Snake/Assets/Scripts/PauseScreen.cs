@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PauseScreen : MonoBehaviour
 {
@@ -32,6 +33,11 @@ public class PauseScreen : MonoBehaviour
     {
         pauseScreen.SetActive(false);
         Time.timeScale = snake.snakeSpeed;
+    }
+
+    public static void GoToMenu()
+    {
+        SceneManager.LoadScene("Snake_Menu");
     }
 
 

@@ -19,6 +19,9 @@ public class DeathScreen : MonoBehaviour
     {
         if (deathScreen.activeInHierarchy == true && Input.GetKeyDown(KeyCode.Space))
             SceneManager.LoadScene("Snake_1");
+        else if (deathScreen.activeInHierarchy == true && Input.GetKeyDown(KeyCode.Escape))
+            SceneManager.LoadScene("Snake_Menu");
+
     }
     public static void SetDeathScreenActive()
     {
