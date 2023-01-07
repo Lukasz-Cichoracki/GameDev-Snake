@@ -1041,6 +1041,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   segmentPrefab: {fileID: 2388166773502782519, guid: 608f51b759458fb4dab1a7a6c4f41e97, type: 3}
   initalSize: 3
+  snakeSpeed: 0.85
+  sDS: {fileID: 11400000, guid: 7b0771aa7741c20408c81c0284286619, type: 2}
 --- !u!1 &1729440554
 GameObject:
   m_ObjectHideFlags: 0

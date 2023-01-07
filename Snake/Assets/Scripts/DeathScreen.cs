@@ -6,9 +6,11 @@ using UnityEngine.SceneManagement;
 public class DeathScreen : MonoBehaviour
 {
     public static GameObject deathScreen;
+    public static Snake snake;
 
     private void Awake()
     {
+        snake = FindObjectOfType<Snake>();
         deathScreen = GameObject.Find("deathScreen");
         DisableDeathScreen();
     }
@@ -26,6 +28,6 @@ public class DeathScreen : MonoBehaviour
     public static void DisableDeathScreen()
     {
         deathScreen.SetActive(false);
-        Time.timeScale = 1f;
+        Time.timeScale = snake.snakeSpeed;
     }
 }
